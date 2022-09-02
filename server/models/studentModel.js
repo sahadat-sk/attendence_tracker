@@ -15,6 +15,11 @@ const studentSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+
+        isEducator: {
+            type: Boolean,
+            default: false,
+        },
         
         enrolledClasses: [{
             type: mongoose.Schema.Types.ObjectId,

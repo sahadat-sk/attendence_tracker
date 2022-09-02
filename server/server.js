@@ -27,6 +27,9 @@ app.use("/login", require("./routes/authRoutes/login"));
 app.use("/refresh", require("./routes/authRoutes/refresh"));
 app.use("/logout", require("./routes/authRoutes/logout"));
 
+app.use(verifyJWT);
+app.use("/course", require("./routes/courseRouters/courseRoutes"));
+
 mongoose.connection.once("open", () => {
     console.log("MongoDb Connected");
     app.listen(PORT, () => {

@@ -2,8 +2,10 @@ const Student = require("../../models/studentModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+SECURE = false;
+
 const handleNewStudent = async (req, res) => {
-    const { name, username, password } = req.body;
+    const { name, username, password ,isEducator} = req.body;
     if (!name || !username || !password) {
         return res.status(400).json({ message: "Please enter all fields" });
     }
@@ -15,9 +17,10 @@ const handleNewStudent = async (req, res) => {
             name,
             username,
             password: hashedPassword,
+            isEducator
         });
         const refreshToken = jwt.sign(
-            { name: student.username, _id: student._id },
+            { name: student.username, _id: student._id , isEducator },
             process.env.REFRESH_TOKEN_SECRET,
             { expiresIn: "1d" }
         );
@@ -26,6 +29,7 @@ const handleNewStudent = async (req, res) => {
             {
                 id: student._id,
                 name: student.name,
+                isEducator
             },
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: "300s" }
@@ -34,11 +38,11 @@ const handleNewStudent = async (req, res) => {
         //cookie with refrest token
         res.cookie("jwt", refreshToken, {
             httpOnly: true,
-            secure: true, // change this is production
+            secure: SECURE, // change this is production
             sameSite: "None",
             maxAge: 24 * 60 * 60 * 1000,
         });
-        res.status(201).json({ student, accessToken, _id : student._id });
+        res.status(201).json({  accessToken, _id : student._id });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

@@ -16,15 +16,16 @@ const handleRefreshToken = async (req, res) => {
             {
                 _id: student._id,
                 name: student.name,
+                isEducator: student.isEducator,
             },
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: "300s" }
         );
         res.status(200).json({
             name: student.name,
-            email: student.email,
+            username: student.username,
             accessToken,
-            _id : student._id,
+            _id: student._id,
         });
     } catch (error) {
         res.sendStatus(401);
