@@ -29,6 +29,7 @@ app.use("/logout", require("./routes/authRoutes/logout"));
 
 app.use(verifyJWT);
 app.use("/course", require("./routes/courseRouters/courseRoutes"));
+app.use("/attendence", require("./routes/attendenceRouters/attendenceRouters"));
 
 mongoose.connection.once("open", () => {
     console.log("MongoDb Connected");
