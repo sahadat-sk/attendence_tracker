@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box, Button,Typography,FormControl, InputLabel, OutlinedInput, Snackbar, Alert} from '@mui/material'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-const SignUp = () => {
+const SignUp = ({isEducator}) => {
     const [name, setName] = useState();
     const [username, setUsername] = useState();
     const [password, setpassword] = useState();
@@ -22,7 +22,10 @@ const SignUp = () => {
         const {data} = await axios.post('/register/',{name,username,password},config)
         localStorage.setItem("UserOnline", JSON.stringify(data))
         localStorage.setItem('isAuth',true);
-        history.push('/student');
+        if(isEducator)
+            history.push('/teacher');
+        else
+            history.push('/student');
 
     } catch (error) {
         console.log(error);
