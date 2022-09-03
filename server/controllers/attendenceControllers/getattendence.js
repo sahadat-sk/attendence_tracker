@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
             class: classId,
             attentedStudents:{$elemMatch:{$eq:req.user._id}}}
         ).populate("attentedStudents");
-        res.json(classData.length);
+        res.json({length:classData.length});
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

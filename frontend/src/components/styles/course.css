@@ -1,0 +1,15 @@
+.MuiAccordionSummary-content{
+    justify-content: space-between;
+    margin-right: 30px !important;
+}
+.MuiAccordionDetails-root{
+    height:20vh;
+    border-radius: 0px 0px 5px 5px!important;
+       border:1.5px solid grey !important;
+    border-top: none;
+
+}
+.MuiAccordionSummary-root{
+    border-radius: 5px 5px 0px 0px !important;
+ 
+}

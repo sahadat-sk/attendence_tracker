@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
             class: classId,
         }).populate("attentedStudents");
        // console.log(classData.length);
-        res.json(classData.length);
+        res.json({length:classData.length});
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
