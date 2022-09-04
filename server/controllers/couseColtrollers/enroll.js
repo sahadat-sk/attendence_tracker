@@ -2,7 +2,7 @@ const Class = require("../../models/classModel");
 const Student = require("../../models/studentModel");
 
 module.exports = async (req, res) => {
-    const { classId, studentId, enrollKey } = req.body;
+    const { classId,studentId,enrollKey } = req.body;
     try {
         const classs = await Class.findById(classId);
         const student = await Student.findById(studentId);
