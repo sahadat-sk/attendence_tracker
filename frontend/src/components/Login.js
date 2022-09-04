@@ -65,6 +65,7 @@ function handleClose(){
                 id="ID"
                 label='Password'
                 sx={{borderRadius:'0px 5px 5px 0px',backgroundColor:'#FEFFFF'}}
+                type="password"
                 onChange={(e)=>{setpassword(e.target.value)}}
                 />
             </FormControl>

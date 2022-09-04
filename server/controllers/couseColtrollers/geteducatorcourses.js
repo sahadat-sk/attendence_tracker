@@ -5,11 +5,12 @@ module.exports = async (req, res) => {
         const { educatorId } = req.body;
 
         const classes = await Class.find({ educator: educatorId }).populate(
-            "educator"
+            "educator studentsEnrolled"
         );
 
         res.status(200).json(classes);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error: error.message });
     }
 };

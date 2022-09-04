@@ -6,7 +6,7 @@ import AddCourses from '../components/AddCourses';
 import TeacherCourses from '../components/TeacherCourses';
 const Teacher = () => {
     const [isOpen, setisOpen] = useState(false);
-    const [show, setshow] = useState(1);
+    const [show, setshow] = useState(0);
     const history = useHistory();
   
   

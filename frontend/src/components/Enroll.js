@@ -6,6 +6,7 @@ const Enroll = () => {
     const [expanded, setExpanded] = useState(-1);
     const [enrollKey, setEnrollKey] = useState();
     const [open, setOpen] = useState(false);
+    const [success, setSuccess] = useState(false);
     const user = JSON.parse(localStorage.getItem('UserOnline'));
     useEffect(() => {
         async function fetch(){
@@ -31,6 +32,9 @@ const Enroll = () => {
     function handleClose(){
         setOpen(false)
     }
+    function handleCloseSuccess(){
+        setSuccess(false)
+    }
 
    async function submitHandler(idx){
             try{
@@ -47,12 +51,14 @@ const Enroll = () => {
                     }
                 }
                 const {data}=await axios.post('/course/enroll/',{enrollKey,studentId,classId},config);
+                setSuccess(true);
 
             }
             catch(Error){
                 console.log(Error);
             }
    }
+
 
   return (
     <Box display='flex' justifyContent='center' alignItems='center' sx={{flexFlow:'column',marginTop:'9vh'}}>
@@ -97,6 +103,11 @@ const Enroll = () => {
                         <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
                             <Alert severity="error" onClose={handleClose} sx={{ width: '100%' }}>
                                 Please Fill All Fields!
+                            </Alert>
+                        </Snackbar>
+                        <Snackbar open={success} autoHideDuration={4000} onClose={handleCloseSuccess}>
+                            <Alert severity="success" onClose={handleCloseSuccess} sx={{ width: '100%' }}>
+                                Enrolled!
                             </Alert>
                         </Snackbar>
                     </AccordionDetails>
