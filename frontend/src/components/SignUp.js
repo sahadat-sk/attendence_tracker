@@ -19,8 +19,9 @@ const SignUp = ({isEducator}) => {
                 "Content-type":"application/json"
             },
         }
-        const {data} = await axios.post('/register/',{name,username,password},config)
+        const {data} = await axios.post('/register/',{name,username,password,isEducator},config)
         localStorage.setItem("UserOnline", JSON.stringify(data))
+        console.log(data);
         localStorage.setItem('isAuth',true);
         if(isEducator)
             history.push('/teacher');

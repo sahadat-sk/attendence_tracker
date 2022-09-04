@@ -20,8 +20,13 @@ const Login = () => {
         }
         const {data} = await axios.post('/login',{username,password},config)
         localStorage.setItem("UserOnline", JSON.stringify(data))
+        const user = JSON.parse(localStorage.getItem("UserOnline"));
+        console.log(user)
         localStorage.setItem('isAuth',true);
-        history.push('/student');
+        if(user.isEducator)
+            history.push('/teacher')
+        else
+            history.push('/student');
 
     } catch (error) {
         console.log(error);

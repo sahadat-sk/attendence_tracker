@@ -1,34 +1,31 @@
+import React, { useState } from 'react'
 import { Box, List, ListItem, Toolbar, Drawer, ListItemText, ListItemButton, CssBaseline, AppBar, Button, IconButton, ListItemIcon, Typography} from '@mui/material'
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import Courses from '../components/Courses';
-import Enroll from '../components/Enroll';
-
-const Student = () => {
-  const [isOpen, setisOpen] = useState(false);
-  const [show, setshow] = useState(0);
-  const history = useHistory();
-
-  const logoutHandler = async ()=>{
+import axios from 'axios';
+import AddCourses from '../components/AddCourses';
+import TeacherCourses from '../components/TeacherCourses';
+const Teacher = () => {
+    const [isOpen, setisOpen] = useState(false);
+    const [show, setshow] = useState(1);
+    const history = useHistory();
+  
+  
+    const logoutHandler = async ()=>{
     localStorage.setItem('isAuth', false);
     localStorage.setItem("UserOnline",false); 
     const {data} = await axios.get('/logout');
     history.push('/')
   }
 
-  function selectComponent(){
-    switch (show){
-      case 0:
-        return <Courses />
-      case 1:
-        return <Enroll />
+  function componentSelect(){
+    switch(show){
+        case 0:
+            return <TeacherCourses />;
+        case 1:
+            return <AddCourses />;
     }
   }
-
-
   
-
   return (
     <Box>
       <CssBaseline />
@@ -41,7 +38,7 @@ const Student = () => {
             backgroundColor:'#DEDEDE'
           }}}>
           <List>
-            {['Courses','Enroll'].map((text,idx)=>(
+            {['Courses','Add Courses'].map((text,idx)=>(
               <ListItem key={text} disablePadding>
                 <ListItemButton onClick={()=>setshow(idx)} sx={{
                   height:'8vh',
@@ -73,9 +70,9 @@ const Student = () => {
             Logout
           </Button>
         </Box>
-        {selectComponent()}
-    </Box>
+        {componentSelect()}
+    </Box>      
   )
 }
 
-export default Student;
+export default Teacher

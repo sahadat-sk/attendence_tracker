@@ -17,7 +17,6 @@ const Enroll = () => {
                 }
                 const {data}=await axios.get('/course/getcourses/',config);
                 setCourses(data);
-                console.log(data);
             }
             catch(Error){
                 console.log(Error);
@@ -48,6 +47,7 @@ const Enroll = () => {
                     }
                 }
                 const {data}=await axios.post('/course/enroll/',{enrollKey,studentId,classId},config);
+
             }
             catch(Error){
                 console.log(Error);
@@ -71,7 +71,9 @@ const Enroll = () => {
                             <Typography variant='h6' sx={{ width:'30vw', flexShrink: 0 }}>
                                 {item.module}
                             </Typography>
-                            <Typography sx={{ color: 'text.secondary' }}>Some Sir</Typography>                           
+                            <Typography sx={{ color: 'text.secondary' }}>
+                                {item.educator.username}    
+                            </Typography>                           
                         </Box>
                     </AccordionSummary>
                     <AccordionDetails sx={{display:'flex',alignItems:'flex-start',justifyContent:'center',flexFlow:'column'}}>

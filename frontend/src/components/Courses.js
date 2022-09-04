@@ -5,7 +5,7 @@ import axios from 'axios';
 const Courses = () => {
     const [expanded, setExpanded] = useState(-1);
     const [attendencePer,setAttendencePer] = useState(90);
-    const [enrolledCourses, setEnrolledCourses] = useState(['Physics']);
+    const [enrolledCourses, setEnrolledCourses] = useState([]);
     const [loading,setLoading] = useState(false);
     const [daysPresent, setDaysPresent] = useState(0);
     const [totalDays, setTotalDays] = useState(0);
@@ -75,7 +75,9 @@ const Courses = () => {
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>
                             {item.module}
                         </Typography>
-                        <Typography sx={{ color: 'text.secondary' }}>Some Sir</Typography>
+                        <Typography sx={{ color: 'text.secondary' }}>
+                            {item.educator.username}
+                        </Typography>
                     </AccordionSummary>
                     <AccordionDetails sx={{display:'flex',alignItems:'flex-start',justifyContent:'center',flexFlow:'column'}}>
                         <Typography variant="h6" sx={{fontFamily:'Sans Sherif',marginLeft:'1vw'}}>
