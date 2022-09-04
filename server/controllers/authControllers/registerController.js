@@ -42,7 +42,7 @@ const handleNewStudent = async (req, res) => {
             sameSite: "None",
             maxAge: 24 * 60 * 60 * 1000,
         });
-        res.status(201).json({  accessToken, _id : student._id });
+        res.status(201).json({  accessToken, _id : student._id,name: student.name });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

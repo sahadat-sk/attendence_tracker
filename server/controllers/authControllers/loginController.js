@@ -43,7 +43,7 @@ const handleLogin = async (req, res) => {
     });
 
     //authorization with access token to student
-    res.status(200).json({ name: student.name, accessToken, _id : student._id });
+    res.status(200).json({ name: student.name, accessToken, _id : student._id,isEducator: student.isEducator });
 };
 
 module.exports = { handleLogin };
