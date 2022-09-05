@@ -3,9 +3,9 @@ import { Redirect } from 'react-router-dom';
 
 const Protected = ({children}) => {
 
-    const isAuth = JSON.parse(localStorage.getItem('UserOnline'));
+    const isAuth = JSON.parse(localStorage.getItem('isAuth'));
 
-    if (isAuth.accessToken) {
+    if (isAuth) {
         return children;
     }
     else{

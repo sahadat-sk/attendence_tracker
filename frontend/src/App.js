@@ -10,8 +10,8 @@ function App() {
       <Route path='/' component={Home} exact />
       <Protected>
         <Route path='/student' component={Student} exact />
-        <Route path='/teacher' component={Teacher} exact />       
-      </Protected>
+        <Route path='/teacher' component={Teacher} exact />
+      </Protected>       
     </div>
   );
 }
