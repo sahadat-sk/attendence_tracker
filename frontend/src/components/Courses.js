@@ -53,7 +53,7 @@ const Courses = () => {
                 const {data}=await axios.get('/course/getenrolledcourses/',config);
                 setEnrolledCourses(data);
             }
-            catch(Error){
+            catch(Error){ 
                 console.log(Error);
             }
         }
