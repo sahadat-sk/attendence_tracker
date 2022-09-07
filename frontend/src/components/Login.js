@@ -64,6 +64,7 @@ function handleClose(){
                 <OutlinedInput
                 id="ID"
                 label='Password'
+                type='password'
                 sx={{borderRadius:'0px 5px 5px 0px',backgroundColor:'#FEFFFF'}}
                 type="password"
                 onChange={(e)=>{setpassword(e.target.value)}}
